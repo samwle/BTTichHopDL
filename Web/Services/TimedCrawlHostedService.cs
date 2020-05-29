@@ -5,11 +5,13 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
+using Microsoft.eShopWeb.ApplicationCore.Entities;
 using Microsoft.eShopWeb.Infrastructure.Data;
 using Microsoft.eShopWeb.Web.Pages.Admin;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+
 
 namespace Microsoft.eShopWeb.Web.Services
 {
@@ -19,7 +21,7 @@ namespace Microsoft.eShopWeb.Web.Services
         private Timer _timer;
         private readonly IServiceProvider _provider;
         
-        private List<ApplicationCore.Entities.CrawledItem> crawledList;
+        private List<CrawledItem> crawledList;
 
         public TimedCrawlHostedService(ILogger<TimedCrawlHostedService> logger, IServiceProvider serviceProvider)
         {
@@ -44,8 +46,16 @@ namespace Microsoft.eShopWeb.Web.Services
         {
             _logger.LogInformation("Crawl Products Background Service is working.");
 
+            _logger.LogInformation("Crawl Products from thegioididong.com");
             TGDDCrawlerasync().Wait();
-                        
+
+            _logger.LogInformation("Crawl Products from fptshop.com.vn");
+            FPTSCralerAsync().Wait();
+
+            _logger.LogInformation("Crawl Products from fstudiobyfpt.com.vn");
+            FSSTDCralerAsync().Wait();
+
+
             if (crawledList != null && crawledList.Count > 0)
             {
                 using (IServiceScope scope = _provider.CreateScope())
@@ -70,7 +80,7 @@ namespace Microsoft.eShopWeb.Web.Services
             // a list to add all the list of cars and the various prices 
             if (crawledList == null)
             {
-                crawledList = new List<ApplicationCore.Entities.CrawledItem>();
+                crawledList = new List<CrawledItem>();
             }
             
             var divs = htmlDocument.DocumentNode.SelectNodes(@"//section[@class='cate cate42 filtered']/ul/li/a");
@@ -102,7 +112,7 @@ namespace Microsoft.eShopWeb.Web.Services
                           : dataorigin;
                 }
 
-                var item = new ApplicationCore.Entities.CrawledItem(model, price, link, image);
+                var item = new CrawledItem(model, price, link, image);
 
                 if (!string.IsNullOrEmpty(item.Model))
                 {
@@ -112,7 +122,7 @@ namespace Microsoft.eShopWeb.Web.Services
             }
         }
 
-        private static async Task VTSCralerAsync()
+        private async Task VTSCralerAsync()
         {
             try
             {
@@ -126,7 +136,7 @@ namespace Microsoft.eShopWeb.Web.Services
                 // a list to add all the list of cars and the various prices 
                 if (crawledList == null)
                 {
-                    crawledList = new List<CrawlItem>();
+                    crawledList = new List<CrawledItem>();
                 }
                 var divs = htmlDocument.DocumentNode.SelectNodes(@"//selection[@class='item ProductList3Col_item']");
 
@@ -142,17 +152,12 @@ namespace Microsoft.eShopWeb.Web.Services
                     var imageItem = div.Descendants("img").Where(o => o.GetAttributeValue("id", "").Equals("imgSeo_2")).FirstOrDefault();
                     string image = imageItem.GetAttributeValue("src", "");
 
-                    var car = new CrawlItem
-                    {
-                        Model = model,
-                        Price = price,
-                        Link = link,
-                        ImageUrl = image
-                    };
 
-                    if (!string.IsNullOrEmpty(car.Model))
+                    var item = new CrawledItem(model, price, link, image);
+
+                    if (!string.IsNullOrEmpty(item.Model))
                     {
-                        crawledList.Add(car);
+                        crawledList.Add(item);
                     }
 
                 }
@@ -164,7 +169,7 @@ namespace Microsoft.eShopWeb.Web.Services
             }
         }
 
-        private static async Task DMXCralerAsync()
+        private async Task DMXCralerAsync()
         {
             //the url of the page we want to test
             var url = "https://www.dienmayxanh.com/dien-thoai-apple-iphone";
@@ -184,7 +189,7 @@ namespace Microsoft.eShopWeb.Web.Services
             // a list to add all the list of cars and the various prices 
             if (crawledList == null)
             {
-                crawledList = new List<CrawlItem>();
+                crawledList = new List<CrawledItem>();
             }
             //var cars = new List<Car>();
             //var divs = htmlDocument.DocumentNode.Descendants("ul").FirstOrDefault().Descendants("li").ToList();
@@ -199,7 +204,7 @@ namespace Microsoft.eShopWeb.Web.Services
             Console.WriteLine("DMXCralerAsync done");
         }
 
-        private static async Task WSSCralerAsync()
+        private async Task WSSCralerAsync()
         {
             try
             {
@@ -211,11 +216,10 @@ namespace Microsoft.eShopWeb.Web.Services
 
                 htmlDocument.LoadHtml(html);
 
-
                 // a list to add all the list of cars and the various prices 
                 if (crawledList == null)
                 {
-                    crawledList = new List<CrawlItem>();
+                    crawledList = new List<CrawledItem>();
                 }
                 //var cars = new List<Car>();
                 //var divs = htmlDocument.DocumentNode.Descendants("ul").FirstOrDefault().Descendants("li").ToList();
@@ -233,17 +237,11 @@ namespace Microsoft.eShopWeb.Web.Services
                     var imageItem = div.Descendants("span").Where(o => o.GetAttributeValue("class", "").Equals("product-img")).FirstOrDefault().Descendants("img").FirstOrDefault();
                     string image = imageItem.GetAttributeValue("src", "");
 
-                    var car = new CrawlItem
-                    {
-                        Model = model,
-                        Price = price,
-                        Link = link,
-                        ImageUrl = image
-                    };
+                    var item = new CrawledItem(model, price, link, image);
 
-                    if (!string.IsNullOrEmpty(car.Model))
+                    if (!string.IsNullOrEmpty(item.Model))
                     {
-                        crawledList.Add(car);
+                        crawledList.Add(item);
                     }
 
                 }
@@ -255,7 +253,7 @@ namespace Microsoft.eShopWeb.Web.Services
             }
         }
 
-        private static async Task FPTSCralerAsync()
+        private async Task FPTSCralerAsync()
         {
             try
             {
@@ -271,7 +269,7 @@ namespace Microsoft.eShopWeb.Web.Services
                 // a list to add all the list of cars and the various prices 
                 if (crawledList == null)
                 {
-                    crawledList = new List<CrawlItem>();
+                    crawledList = new List<CrawledItem>();
                 }
                 //var cars = new List<Car>();
                 //var divs = htmlDocument.DocumentNode.Descendants("ul").FirstOrDefault().Descendants("li").ToList();
@@ -289,17 +287,11 @@ namespace Microsoft.eShopWeb.Web.Services
                     var imageItem = div.Descendants("img").Where(o => o.GetAttributeValue("class", "").Equals("lazy")).FirstOrDefault();
                     string image = imageItem.GetAttributeValue("data-original", "");
 
-                    var car = new CrawlItem
-                    {
-                        Model = model,
-                        Price = price,
-                        Link = link,
-                        ImageUrl = image
-                    };
+                    var item = new CrawledItem(model, price, link, image);
 
-                    if (!string.IsNullOrEmpty(car.Model))
+                    if (!string.IsNullOrEmpty(item.Model))
                     {
-                        crawledList.Add(car);
+                        crawledList.Add(item);
                     }
 
                 }
@@ -311,7 +303,7 @@ namespace Microsoft.eShopWeb.Web.Services
             }
         }
 
-        private static async Task FSSTDCralerAsync()
+        private async Task FSSTDCralerAsync()
         {
             try
             {
@@ -326,7 +318,7 @@ namespace Microsoft.eShopWeb.Web.Services
                 // a list to add all the list of cars and the various prices 
                 if (crawledList == null)
                 {
-                    crawledList = new List<CrawlItem>();
+                    crawledList = new List<CrawledItem>();
                 }
                 //var cars = new List<Car>();
                 //var divs = htmlDocument.DocumentNode.Descendants("ul").FirstOrDefault().Descendants("li").ToList();
@@ -344,17 +336,11 @@ namespace Microsoft.eShopWeb.Web.Services
                     var imageItem = div.Descendants("img").FirstOrDefault();
                     string image = "https://fstudiobyfpt.com.vn" + imageItem.GetAttributeValue("src", "");
 
-                    var car = new CrawlItem
-                    {
-                        Model = model,
-                        Price = price,
-                        Link = link,
-                        ImageUrl = image
-                    };
+                    var item = new CrawledItem(model, price, link, image);
 
-                    if (!string.IsNullOrEmpty(car.Model))
+                    if (!string.IsNullOrEmpty(item.Model))
                     {
-                        crawledList.Add(car);
+                        crawledList.Add(item);
                     }
 
                 }
@@ -366,7 +352,7 @@ namespace Microsoft.eShopWeb.Web.Services
             }
         }
 
-        private static async Task TikiCralerAsync()
+        private async Task TikiCralerAsync()
         {
             try
             {
@@ -381,7 +367,7 @@ namespace Microsoft.eShopWeb.Web.Services
                 // a list to add all the list of cars and the various prices 
                 if (crawledList == null)
                 {
-                    crawledList = new List<CrawlItem>();
+                    crawledList = new List<CrawledItem>();
                 }
                 //var cars = new List<Car>();
                 //var divs = htmlDocument.DocumentNode.Descendants("ul").FirstOrDefault().Descendants("li").ToList();
@@ -399,17 +385,11 @@ namespace Microsoft.eShopWeb.Web.Services
                     var imageItem = div.Descendants("img").FirstOrDefault();
                     string image = "https://fstudiobyfpt.com.vn" + imageItem.GetAttributeValue("src", "");
 
-                    var car = new CrawlItem
-                    {
-                        Model = model,
-                        Price = price,
-                        Link = link,
-                        ImageUrl = image
-                    };
+                    var item = new CrawledItem(model, price, link, image);
 
-                    if (!string.IsNullOrEmpty(car.Model))
+                    if (!string.IsNullOrEmpty(item.Model))
                     {
-                        crawledList.Add(car);
+                        crawledList.Add(item);
                     }
 
                 }
@@ -420,8 +400,8 @@ namespace Microsoft.eShopWeb.Web.Services
 
             }
         }
-
-        private static async Task PicoCralerAsync()
+        
+        private async Task PicoCralerAsync()
         {
             try
             {
@@ -436,7 +416,7 @@ namespace Microsoft.eShopWeb.Web.Services
                 // a list to add all the list of cars and the various prices 
                 if (crawledList == null)
                 {
-                    crawledList = new List<CrawlItem>();
+                    crawledList = new List<CrawledItem>();
                 }
                 //var cars = new List<Car>();
                 //var divs = htmlDocument.DocumentNode.Descendants("ul").FirstOrDefault().Descendants("li").ToList();
@@ -458,17 +438,11 @@ namespace Microsoft.eShopWeb.Web.Services
                         image = imageItem.Descendants("img").FirstOrDefault().GetAttributeValue("data-src", "");
                     }
 
-                    var car = new CrawlItem
-                    {
-                        Model = model,
-                        Price = price,
-                        Link = link,
-                        ImageUrl = image
-                    };
+                    var item = new CrawledItem(model, price, link, image);
 
-                    if (!string.IsNullOrEmpty(car.Model))
+                    if (!string.IsNullOrEmpty(item.Model))
                     {
-                        crawledList.Add(car);
+                        crawledList.Add(item);
                     }
 
                 }
@@ -479,8 +453,7 @@ namespace Microsoft.eShopWeb.Web.Services
 
             }
         }
-
-        private static async Task NgKCralerAsync()
+        private async Task NgKCralerAsync()
         {
             try
             {
@@ -495,7 +468,7 @@ namespace Microsoft.eShopWeb.Web.Services
                 // a list to add all the list of cars and the various prices 
                 if (crawledList == null)
                 {
-                    crawledList = new List<CrawlItem>();
+                    crawledList = new List<CrawledItem>();
                 }
                 //var cars = new List<Car>();
                 //var divs = htmlDocument.DocumentNode.Descendants("ul").FirstOrDefault().Descendants("li").ToList();
@@ -517,13 +490,7 @@ namespace Microsoft.eShopWeb.Web.Services
                         image = imageItem.Descendants("img").FirstOrDefault().GetAttributeValue("data-src", "");
                     }
 
-                    var car = new CrawlItem
-                    {
-                        Model = model,
-                        Price = price,
-                        Link = link,
-                        ImageUrl = image
-                    };
+                    var car = new CrawledItem(model, price, link, image);
 
                     if (!string.IsNullOrEmpty(car.Model))
                     {
@@ -538,7 +505,7 @@ namespace Microsoft.eShopWeb.Web.Services
 
             }
         }
-
+        
         public Task StopAsync(CancellationToken cancellationToken)
         {
             _logger.LogInformation("Crawl Products Background Service is stopping.");

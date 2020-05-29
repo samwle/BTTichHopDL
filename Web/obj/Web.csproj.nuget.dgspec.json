@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\Web\\Web.csproj": {}
+    "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\Web\\Web.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj": {
+    "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj",
+        "projectUniqueName": "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj",
         "projectName": "ApplicationCore",
-        "projectPath": "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj",
+        "projectPath": "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj",
         "packagesPath": "C:\\Users\\Sam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\ApplicationCore\\obj\\",
+        "outputPath": "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\ApplicationCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -69,14 +69,14 @@
         }
       }
     },
-    "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\Infrastructure\\Infrastructure.csproj": {
+    "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Sam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\Infrastructure\\obj\\",
+        "outputPath": "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -95,8 +95,8 @@
         "frameworks": {
           "netstandard2.1": {
             "projectReferences": {
-              "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj": {
-                "projectPath": "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj"
+              "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj": {
+                "projectPath": "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj"
               }
             }
           }
@@ -151,14 +151,14 @@
         }
       }
     },
-    "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\Web\\Web.csproj": {
+    "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\Web\\Web.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\Web\\Web.csproj",
+        "projectUniqueName": "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\Web\\Web.csproj",
         "projectName": "Web",
-        "projectPath": "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\Web\\Web.csproj",
+        "projectPath": "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\Web\\Web.csproj",
         "packagesPath": "C:\\Users\\Sam\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\Web\\obj\\",
+        "outputPath": "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\Web\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -177,11 +177,11 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj": {
-                "projectPath": "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj"
+              "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj": {
+                "projectPath": "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj"
               },
-              "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\Infrastructure\\Infrastructure.csproj"
+              "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -220,6 +220,10 @@
               "version": "[3.1.4, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[3.1.4, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
               "version": "[3.1.4, )"
             },

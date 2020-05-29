@@ -4669,11 +4669,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj",
+      "projectUniqueName": "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj",
       "projectName": "ApplicationCore",
-      "projectPath": "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj",
+      "projectPath": "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj",
       "packagesPath": "C:\\Users\\Sam\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\ApplicationCore\\obj\\",
+      "outputPath": "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\ApplicationCore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
