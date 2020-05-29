@@ -29,11 +29,12 @@ namespace Microsoft.eShopWeb.Web.Services
 
         public Task StartAsync(CancellationToken cancellationToken)
         {
-            _logger.LogInformation("Timed Background Service is starting. Loading every hours");
+            _logger.LogInformation("Crawl Products Background Service is starting. Loading every hours");
 
              _timer = new Timer(DoWork, null, TimeSpan.Zero,
-                /*TimeSpan.FromSeconds(15)*/
+                //TimeSpan.FromSeconds(15)
                 TimeSpan.FromHours(1)
+                //TimeSpan.FromMinutes(5)
                  );
 
             return Task.CompletedTask;
@@ -41,7 +42,7 @@ namespace Microsoft.eShopWeb.Web.Services
 
         private void DoWork(object state)
         {
-            _logger.LogInformation("Timed Background Service is working.");
+            _logger.LogInformation("Crawl Products Background Service is working.");
 
             TGDDCrawlerasync().Wait();
                         
@@ -53,10 +54,8 @@ namespace Microsoft.eShopWeb.Web.Services
                     _catalogContext.CrawledItems.AddRange(crawledList);
                     _catalogContext.SaveChanges();
                     crawledList = null;
-                }
-                  
+                }                  
             }
-
         }
 
         private async Task TGDDCrawlerasync()
@@ -115,7 +114,7 @@ namespace Microsoft.eShopWeb.Web.Services
 
         public Task StopAsync(CancellationToken cancellationToken)
         {
-            _logger.LogInformation("Timed Background Service is stopping.");
+            _logger.LogInformation("Crawl Products Background Service is stopping.");
 
             _timer?.Change(Timeout.Infinite, 0);
 

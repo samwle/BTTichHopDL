@@ -56,7 +56,9 @@ namespace Microsoft.eShopWeb.Web.Services
                     Id = i.Id,
                     Name = i.Name,
                     PictureUri = _uriComposer.ComposePicUri(i.PictureUri),
-                    Price = i.Price
+                    Price = i.Price,
+                    Link = i.Description,
+                    CatalogType = i.CatalogType.Type
                 }),
                 Brands = await GetBrands(),
                 Types = await GetTypes(),

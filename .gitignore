@@ -3,3 +3,5 @@
 ################################################################################
 
 /Web/obj/Web.csproj.EntityFrameworkCore.targets
+/Web/bin/Debug/netcoreapp3.1
+/Infrastructure/obj/Infrastructure.csproj.EntityFrameworkCore.targets

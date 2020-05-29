@@ -132,6 +132,8 @@ namespace Microsoft.eShopWeb.Web
                 options.Conventions.AuthorizePage("/Basket/Checkout");
             });
             services.AddControllersWithViews();
+            
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
             services.AddHttpContextAccessor();
 
