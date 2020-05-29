@@ -80,9 +80,9 @@ namespace Microsoft.eShopWeb.Web.Services
             // a list to add all the list of cars and the various prices 
             if (crawledList == null)
             {
-                crawledList = new List<CrawledItem>();
+                crawledList = new List<ApplicationCore.Entities.CrawledItem>();
             }
-            
+
             var divs = htmlDocument.DocumentNode.SelectNodes(@"//section[@class='cate cate42 filtered']/ul/li/a");
 
             foreach (var div in divs)
@@ -112,7 +112,7 @@ namespace Microsoft.eShopWeb.Web.Services
                           : dataorigin;
                 }
 
-                var item = new CrawledItem(model, price, link, image);
+                var item = new ApplicationCore.Entities.CrawledItem(model, price, link, image);
 
                 if (!string.IsNullOrEmpty(item.Model))
                 {
