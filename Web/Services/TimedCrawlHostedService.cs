@@ -112,6 +112,61 @@ namespace Microsoft.eShopWeb.Web.Services
             }
         }
 
+        private async Task WSSCralerAsync()
+        {
+            try
+            {
+                //the url of the page we want to test
+                var url = "https://websosanh.vn/dien-thoai-iphone/cat-89.htm";
+                var httpClient = new HttpClient();
+                var htmlDocument = new HtmlDocument();
+                var html = await httpClient.GetStringAsync(url);
+
+                htmlDocument.LoadHtml(html);
+
+
+                // a list to add all the list of cars and the various prices
+                if (crawledList == null)
+                {
+                    crawledList = new List<CrawlItem>();
+                }
+                //var cars = new List<Car>();
+                //var divs = htmlDocument.DocumentNode.Descendants("ul").FirstOrDefault().Descendants("li").ToList();
+                var divs = htmlDocument.DocumentNode.SelectNodes(@"//li[@class='product-item row-col']");
+
+                foreach (var div in divs)
+                {
+                    var modelItem = div.Descendants("h3").FirstOrDefault();
+                    string model = (modelItem == null) ? string.Empty : modelItem.InnerText;
+
+                    var priceItem = div.Descendants("span").Where(o => o.GetAttributeValue("class", "").Equals("product-price")).FirstOrDefault();
+                    string price = priceItem.InnerText.Split(new string[1] { "Giá từ " }, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault() ?? "Đang cập nhật";
+
+                    string link = div.GetAttributeValue("href", "");
+                    var imageItem = div.Descendants("span").Where(o => o.GetAttributeValue("class", "").Equals("product-img")).FirstOrDefault().Descendants("img").FirstOrDefault();
+                    string image = imageItem.GetAttributeValue("src", "");
+
+                    var car = new CrawlItem
+                    {
+                        Model = model,
+                        Price = price,
+                        Link = link,
+                        ImageUrl = image
+                    };
+
+                    if (!string.IsNullOrEmpty(car.Model))
+                    {
+                        crawledList.Add(car);
+                    }
+
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+        }
+
         public Task StopAsync(CancellationToken cancellationToken)
         {
             _logger.LogInformation("Crawl Products Background Service is stopping.");
