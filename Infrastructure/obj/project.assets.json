@@ -7946,11 +7946,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\Infrastructure\\Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\Infrastructure\\Infrastructure.csproj",
       "projectName": "Infrastructure",
-      "projectPath": "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\Infrastructure\\Infrastructure.csproj",
+      "projectPath": "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\Infrastructure\\Infrastructure.csproj",
       "packagesPath": "C:\\Users\\Sam\\.nuget\\packages\\",
-      "outputPath": "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -7969,8 +7969,8 @@
       "frameworks": {
         "netstandard2.1": {
           "projectReferences": {
-            "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj": {
-              "projectPath": "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj"
+            "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj": {
+              "projectPath": "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj"
             }
           }
         }

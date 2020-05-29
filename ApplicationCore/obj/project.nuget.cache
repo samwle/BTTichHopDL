@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Ya+MzS6dcAjv+oeEPKanJr4fHM/3WqSYAq36LGk7LrXcF/N/q+Hg+4XzLWfM0fGLHXBwyPXNaaZdo7XdHaKCaQ==",
+  "dgSpecHash": "zE7XwdUIVib0dgiahqSdVTiaJkmYKVK2K790xKyc1CdAomJaY1R7CTyxH6yujQ78zJYdH0Ch9vBJG3SHS+q+Dg==",
   "success": true,
-  "projectFilePath": "D:\\Study\\Source\\TichHopDL\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj",
+  "projectFilePath": "C:\\Users\\Sam\\source\\repos\\BTTichHopDL\\ApplicationCore\\ApplicationCore.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sam\\.nuget\\packages\\ardalis.guardclauses\\1.5.0\\ardalis.guardclauses.1.5.0.nupkg.sha512",
     "C:\\Users\\Sam\\.nuget\\packages\\jetbrains.annotations\\2019.1.3\\jetbrains.annotations.2019.1.3.nupkg.sha512",
