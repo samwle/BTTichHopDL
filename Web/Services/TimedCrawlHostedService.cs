@@ -283,7 +283,7 @@ namespace Microsoft.eShopWeb.Web.Services
                     var priceItem = div.Descendants("div").Where(o => o.GetAttributeValue("class", "").Equals("fs-lpil-price")).FirstOrDefault();
                     string price = priceItem.Descendants("p").FirstOrDefault().InnerText;
 
-                    string link = div.GetAttributeValue("href", "");
+                    string link = "https://fptshop.com.vn" + div.Descendants("a").Where(o => o.GetAttributeValue("class", "").Equals("fs-lpil-img")).FirstOrDefault().GetAttributeValue("href", "");
                     var imageItem = div.Descendants("img").Where(o => o.GetAttributeValue("class", "").Equals("lazy")).FirstOrDefault();
                     string image = imageItem.GetAttributeValue("data-original", "");
 
@@ -332,7 +332,7 @@ namespace Microsoft.eShopWeb.Web.Services
                     var priceItem = div.Descendants("p").Where(o => o.GetAttributeValue("class", "").Equals("fs-ctpri")).FirstOrDefault();
                     string price = priceItem.InnerText.Split(new string[1] { "Giá chỉ " }, StringSplitOptions.RemoveEmptyEntries).FirstOrDefault();
 
-                    string link = div.GetAttributeValue("href", "");
+                    string link = "https://fstudiobyfpt.com.vn" + div.Descendants("a").Where(o => o.GetAttributeValue("class", "").Equals("fs-ctimg")).FirstOrDefault().GetAttributeValue("href", "");
                     var imageItem = div.Descendants("img").FirstOrDefault();
                     string image = "https://fstudiobyfpt.com.vn" + imageItem.GetAttributeValue("src", "");
 
@@ -430,7 +430,7 @@ namespace Microsoft.eShopWeb.Web.Services
                     var priceItem = div.Descendants("span").Where(o => o.GetAttributeValue("class", "").Equals("price")).FirstOrDefault();
                     string price = priceItem.InnerText;
 
-                    string link = div.GetAttributeValue("href", "");
+                    string link = div.Descendants("a").FirstOrDefault().GetAttributeValue("href", "");
                     var imageItem = div.Descendants("div").Where(o => o.GetAttributeValue("class", "").Equals("product-image")).FirstOrDefault();
                     string image = imageItem.Descendants("img").FirstOrDefault().GetAttributeValue("src", "");
                     if (image == "")
